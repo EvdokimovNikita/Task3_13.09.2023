@@ -2,8 +2,8 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        int[] testArrays = {2, 3, 5, 7, 8, 10, 11, 12, 13, 15, 16, 19, 21, 26};
-        int searchNum = 16;
+        int[] testArrays = {15, 12, 7, 6, 11, 10, 21, 19, 25, 29, 22, 3, 3};
+        int searchNum = 30;
         System.out.println("Исходный массив: " + Arrays.toString(testArrays));
         System.out.println("Искомый элемент: " + searchNum);
         SortedArrays newArrays = new SortedArrays();
@@ -13,21 +13,29 @@ public class Main {
     }
 
     public static void myBinarySearch(int[] resultsNewArrays, int searchNum) {
+        boolean flag = true;
         int startPoint = 0;
         int endPoint = resultsNewArrays.length;
-        int middleArrays = (startPoint+endPoint) / 2;
+        int middleArrays = (startPoint + endPoint) / 2;
         int middleNum = resultsNewArrays[middleArrays];
         while (middleNum != searchNum) {
-            if (middleNum > searchNum) {
-                endPoint=middleArrays;
+            if (startPoint + 1 == endPoint) {
+                System.out.println("Данное значение отсутствует");
+                flag = false;
+                break;
+            } else if (middleNum > searchNum) {
+                endPoint = middleArrays;
                 middleArrays = (startPoint + endPoint) / 2;
                 middleNum = resultsNewArrays[middleArrays];
             } else if (middleNum < searchNum) {
-                startPoint=middleArrays;
+                startPoint = middleArrays;
                 middleArrays = (startPoint + endPoint) / 2;
                 middleNum = resultsNewArrays[middleArrays];
             }
         }
-        System.out.println("Ответ: " + middleNum);
+        if (flag) {
+            System.out.println("Ответ: " + middleNum);
+        }
     }
 }
+
