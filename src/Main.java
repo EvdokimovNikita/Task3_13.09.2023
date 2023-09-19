@@ -1,5 +1,5 @@
 import java.util.Arrays;
-
+// Бинарный поиск по массиву без использования Arrays.binarySearch
 public class Main {
     public static void main(String[] args) {
         int[] testArrays = {15, 12, 7, 6, 11, 10, 21, 19, 25, 29, 22, 3, 3};
